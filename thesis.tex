@@ -1,0 +1,129 @@
+% !TEX TS-program = lualatex
+% !BIB TS-program = biber
+\DocumentMetadata{
+    lang=en,
+    pdfstandard=ua-2,
+    tagging=on,
+    tagging-setup={
+        math/setup={mathml-AF,mathml-SE},
+        extra-modules={verbatim-mo},
+    }
+}
+%% Options
+% * thesis: Master's thesis rather than dissertation
+% * nocopyright: Disable copyright notice
+% * ragged: Use ragged right edge rather than justified text (better for accessibility)
+\documentclass{authesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fontsetup can slow down compilation, so you may wish to omit these commands while writing
+\usepackage{fontsetup}
+\setsansfont{Arial}
+
+% If using math unicode-math is required.
+\usepackage{unicode-math}
+
+% If using figures, alt text is required. For example:
+%  \includegraphics[alt={Alt text...}]{image.png}
+\usepackage{graphicx}
+
+% Bibliography. biber must be set as the backend, style can be changed.
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\urlstyle{same}
+\usepackage[backend=biber,style=phys,biblabel=brackets,defernumbers=true]{biblatex}
+\DeclareCiteCommand{\citenum}{}{\bibhyperref{\printfield{labelnumber}}}{\multicitedelim}{}
+\addbibresource{./references.bib}
+
+% Footnotes
+\usepackage[bottom]{footmisc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Coffee Consumption Among Graduate Students Writing Dissertations}
+
+\author{Alice Ascher}
+
+% specify degree if other than Doctor of Philosophy or Master of Science
+%\degreetype{Doctor of Education}
+
+% date of graduation
+\date{May 14, 2025}
+
+% up to 6 keywords
+\keywords{coffee, caffeine, academic writing}
+
+% one entry per committee member
+\committee{
+\committeemember Bob Barnard, Chair, Professor of Nutritional Sciences
+\committeemember Charlie Clarke, Associate Professor of Nutritional Sciences
+\committeemember Dan Drower, Professor of Nutritional Sciences
+\committeemember Eve Earlsfield, Professor of English
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frontmatter}
+\maketitle
+
+\begin{abstract}
+The abstract is a concise summary of the contents of the thesis or dissertation.
+A reasonable length for the abstract is 350 words for a dissertation and 150 words
+for a thesis. The abstract is an important guide to potential readers searching for
+information about your topic.
+\end{abstract}
+
+\begin{aidisclosure}
+% If AI tools were used, complete and use the following statement only:
+%In the preparation of this {\thesistype}, the following Artificial Intelligence (AI) tools
+%were used: [list specific tools]. These tools were used primarily to [describe specific
+%functions]. The author acknowledges full responsibility for the intellectual content of this
+%work and has ensured that all AI-assisted sections have been reviewed and revised for
+%accuracy and appropriate academic style. All AI-generated content was reviewed and
+%validated for relevance, appropriateness, and accuracy before incorporation into the
+%final document to maintain scholarly integrity of this research.
+%
+% If no AI tools were used, use the following statement only:
+In the preparation of this {\thesistype}, no Artificial Intelligence (AI) tools were used.
+\end{aidisclosure}
+
+\begin{accessibilitydisclosure}
+In the preparation of this {\thesistype}, the following digital
+accessibility tools were used to ensure this document complies with federal
+requirements: [list specific software/tools]. The author acknowledges full responsibility
+for the intellectual content of this work and has made a good faith effort to comply with
+digital accessibility requirements in publishing, wherein the nature of the content does
+not significantly change in order to do so. Furthermore, all content has been reviewed
+and revised to meet these requirements prior to final publication.
+\end{accessibilitydisclosure}
+
+\begin{acknowledgements}
+I am grateful to my parents for their support.
+\end{acknowledgements}
+
+\tableofcontents
+
+\listoftables
+
+\listoffigures
+\end{frontmatter}
+
+% Chapters
+\input{./chapter/01.tex}
+\input{./chapter/02/02.tex}
+\input{./chapter/03.tex}
+\input{./chapter/04.tex}
+
+% Bibliography
+\printbibliography[heading=bibintoc,title={References}]
+
+% Appendices
+\appendix
+\input{./appendix/A.tex}
+\input{./appendix/B.tex}
+
+\end{document}
