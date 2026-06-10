@@ -67,6 +67,9 @@
 
 \begin{document}
 
+% use roman numerals for page numbering of frontmatter
+\pagenumbering{roman}
+
 \begin{frontmatter}
 \maketitle
 
@@ -111,6 +114,10 @@ I am grateful to my parents for their support.
 
 \listoffigures
 \end{frontmatter}
+
+% Begin arabic page numbering on first page of Ch. 1
+\newpage
+\pagenumbering{arabic}
 
 % Chapters
 \input{./chapter/01.tex}
