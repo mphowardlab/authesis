@@ -231,6 +231,7 @@
 }
 
 % Table of contents
+\RequirePackage{tocbibind}
 \addto\captionsenglish{%
 \renewcommand{\contentsname}{Table of Contents}
 }
