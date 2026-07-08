@@ -30,7 +30,9 @@
 \usepackage{graphicx}
 
 % Bibliography. biber must be set as the backend, style can be changed.
-\usepackage[hidelinks,pdfusetitle]{hyperref}
+% Note: cross-references can cause tagging issues, so they are disabled by default with
+% the "draft" option. You can remove it if you would like to try to enable them.
+\usepackage[hidelinks,pdfusetitle,draft]{hyperref}
 \urlstyle{same}
 \usepackage[backend=biber,style=phys,biblabel=brackets,defernumbers=true]{biblatex}
 \DeclareCiteCommand{\citenum}{}{\bibhyperref{\printfield{labelnumber}}}{\multicitedelim}{}
