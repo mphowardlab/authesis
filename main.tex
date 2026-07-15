@@ -13,6 +13,7 @@
 % * thesis: Master's thesis rather than dissertation
 % * nocopyright: Disable copyright notice
 % * ragged: Use ragged right edge rather than justified text (better for accessibility)
+% * bibstyle: biblatex bibliography style
 \documentclass{authesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,11 +31,12 @@
 %  \includegraphics[alt={Alt text...}]{image.png}
 \usepackage{graphicx}
 
-% Bibliography. biber must be set as the backend, style can be changed.
+% Bibliography (uses biblatex with biber as backend)
+% Set the bibliography style using the bibstyle option of the class.
+% Most other options can be changed here using
+% \ExecuteBibliographyOptions{}
 \usepackage[hidelinks,pdfusetitle]{hyperref}
 \urlstyle{same}
-\usepackage[backend=biber,style=phys,biblabel=brackets,defernumbers=true]{biblatex}
-\DeclareCiteCommand{\citenum}{}{\bibhyperref{\printfield{labelnumber}}}{\multicitedelim}{}
 \addbibresource{./references.bib}
 
 % Footnotes
