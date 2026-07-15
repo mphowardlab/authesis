@@ -50,15 +50,16 @@ The `options` that can be added as a comma-separated list are:
 - `nocopyright`: disable the copyright notice on the title page.
 - `ragged`: use ragged right edge, rather than justified, text. Ragged text may
   may be better for accessibility.
+- `bibstyle`: a valid [bibliiography style][4] (keyword argument). Defaults to
+  `phys` if not specified.
+- `nohyperref`: disable hyperlinks in document.
 
 You should then ensure you have loaded and configured the packages you need for
-writing your document. There are a couple things you need to be aware of to e
+writing your document. There are a couple things you need to be aware of:
 
 - You must use `unicode-math` if you are using math.
 - Different graphics packages (such as `tikz` and `pgfplots` can also be used),
   but make sure you are using accessible colors.
-- You can change the [bibliography style][4] to one appropriate to your
-  discipline using the `style` option to `biblatex`.
 
 If you would like to use other packages, you must make sure it is `compatible`
 with tagging. You can check the status of a large number of packages through
