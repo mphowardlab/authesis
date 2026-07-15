@@ -14,9 +14,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: build [TexLive-${{ matrix.texlive-version }}]
+  test:
+    name: test [TexLive-${{ matrix.texlive-version }}]
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
     strategy:
       fail-fast: false
       matrix:
@@ -35,3 +38,26 @@ jobs:
         with:
           name: thesis
           path: thesis.pdf
+      - name: Install veraPDF
+        uses: conda-incubator/setup-miniconda@v4
+        with:
+          activate-environment: test
+          environment-file: ./github/test-environment.yml
+          miniforge-version: latest
+      - name: Install veraPDF profiles
+        uses: actions/checkout@v7
+        with:
+          repository: veraPDF/veraPDF-validation-profiles
+          path: veraPDF-profiles
+      - name: Validate UA-2
+        run: |
+          verapdf -f ua2 --format html thesis.pdf > verapdf-ua-2.html
+      - name: Validate WCAG 2.2
+        run: |
+          verapdf --profile veraPDF-profiles/WCAG-2-2-Complete-PDF20.xml --format html thesis.pdf > verapdf-wcag-2.2.html
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: veraPDF-reports
+          path: |
+            verapdf-*.html
