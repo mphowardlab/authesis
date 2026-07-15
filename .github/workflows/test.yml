@@ -1,0 +1,59 @@
+name: test
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      -main
+
+  workflow_call:
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: test [TeX Live ${{ matrix.texlive-version }}]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}
+    strategy:
+      fail-fast: false
+      matrix:
+        texlive-version: ["2025", "2026"]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Compile document
+        uses: xu-cheng/texlive-action@v3
+        with:
+          texlive_version: ${{ matrix.texlive-version }}
+          run: |
+            latexmk main.tex
+      - name: Install veraPDF
+        uses: conda-incubator/setup-miniconda@v4
+        with:
+          activate-environment: test
+          environment-file: ./.github/test-environment.yml
+          miniforge-version: latest
+      - name: Install veraPDF profiles
+        uses: actions/checkout@v7
+        with:
+          repository: veraPDF/veraPDF-validation-profiles
+          path: veraPDF-profiles
+      - name: Validate UA-2
+        run: |
+          verapdf -f ua2 --format html main.pdf > verapdf-ua-2.html
+      - name: Validate WCAG 2.2
+        run: |
+          verapdf --profile veraPDF-profiles/PDF_UA/WCAG-2-2-Complete-PDF20.xml --format html main.pdf > verapdf-wcag-2.2.html
+      - name: Upload document and reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-TeX-Live-${{ matrix.texlive-version }}
+          path: |
+            main.pdf
+            verapdf-*.html

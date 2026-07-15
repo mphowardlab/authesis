@@ -22,7 +22,7 @@ for all students, faculty, and staff, so directions to get started there are:
 2. Open *Settings* (`File > Settings` or gear icon in lower left corner), go to
    the *Compiler* tab, then select LuaLaTeX from the list of compilers. Ensure
    the TeX Live version is set to the most current option.
-3. Open [`thesis.tex`](./thesis.tex) in your Overleaf project, and click
+3. Open [`main.tex`](./main.tex) in your Overleaf project, and click
    *Recompile* to generate a PDF.
 4. [Configure your document](#configuration).
 5. [Fill in your front matter](#front-matter).
@@ -32,7 +32,7 @@ for all students, faculty, and staff, so directions to get started there are:
 > [!TIP]
 > If you are working locally on your computer, ensure you have installed a
 > current version of TeX Live and that you have set the compilers correctly. The
-> comment lines at the top of [`thesis.tex`](./thesis.tex) are hints for some
+> comment lines at the top of [`main.tex`](./main.tex) are hints for some
 > editors to use `lualatex` and `biber`.
 
 ## Configuration
