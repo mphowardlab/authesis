@@ -153,7 +153,7 @@ something. Stylewise, be sure to follow the conventions of your discipline!
   \begin{figure}
     \centering
     \includegraphics[alt={Alt text}]{image}
-    \caption{Caption}
+    \caption[Optional short title to appear in list of figures]{Caption}
     \label{fig:image}
   \end{figure}
   ```
@@ -164,7 +164,7 @@ something. Stylewise, be sure to follow the conventions of your discipline!
   ```latex
   \begin{table}
     \centering
-    \caption{Caption}
+    \caption[Optional short title to appear in list of tables]{Caption}
     \tagpdfsetup{table/header-rows={1}}
     \begin{tabular}{|l|l|}
         \hline
@@ -185,10 +185,53 @@ something. Stylewise, be sure to follow the conventions of your discipline!
   Use multirow and multicolumn layouts in tables with caution. It *may* be
   possible to use the `multirow` package if you load `array` [first][7].
 
+## Validation
+
+There are currently no perfect tools for testing PDFs for digital accessibility.
+This template is tested using [veraPDF][8], an industry-supported, open-source
+tool. You can [download veraPDF from its website][9], or you can install it via
+`conda-forge`:
+
+```bash
+conda install -c conda-forge verapdf
+```
+
+> [!TIP]
+> If you are installing by conda on a Mac computer with Apple silicon, you will
+> need to configure your environment for x86_64 because the feedstock does not
+> currently support ARM-based processors.
+>
+> ```bash
+> conda config --env --set subdir osx-64
+> ```
+
+Once installed, you can validate your compiled document for PDF/UA-2:
+
+```bash
+verapdf -f ua2 --format html main.pdf > verapdf-ua-2.html
+```
+
+To test against [Web Content Accessibility Guidelines (WCAG) 2.2][10],
+first [download the veraPDF validation profiles][11] and and extract them to
+`veraPDF-validation-profiles`. Then,
+
+```bash
+verapdf --profile veraPDF-validation-profiles/PDF_UA/WCAG-2-2-Complete-PDF20.xml \
+    --format html main.pdf > verapdf-wcag-2.2.html
+```
+
+Review the reports and address any issues! Please note, though, that some
+aspects of compliance may still need to be checked manually.
+
+> [!WARNING]
+> The [PDF Accessibility Checker (PAC)][12] is another commonly used validator;
+> however, it may currently interpret elements of PDF 2.0 files, which is the
+> file format for this template, as errors.
+
 ## License and credits
 
 This template is made available under an [MIT License](./LICENSE). It was
-adapted from [uiucthesis][8] under its license:
+adapted from [uiucthesis][13] under its license:
 
 ```
 MIT License
@@ -221,4 +264,9 @@ SOFTWARE.
 [5]: https://latex3.github.io/tagging-project/tagging-status
 [6]: https://auburn.edu/about/academic-calendar
 [7]: https://github.com/graduatecollege/uofithesis/issues/6#issuecomment-4057268158
-[8]: https://github.com/graduatecollege/uofithesis
+[8]: https://verapdf.org
+[9]: https://docs.verapdf.org/install
+[10]: https://www.w3.org/TR/WCAG22
+[11]: http://github.com/veraPDF/veraPDF-validation-profiles
+[12]: https://pac.pdf-accessibility.org
+[13]: https://github.com/graduatecollege/uofithesis
