@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   test:
-    name: test [TexLive-${{ matrix.texlive-version }}]
+    name: test [TeX Live ${{ matrix.texlive-version }}]
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -32,7 +32,7 @@ jobs:
         with:
           texlive_version: ${{ matrix.texlive-version }}
           run: |
-            latexmk thesis.tex
+            latexmk main.tex
       - name: Install veraPDF
         uses: conda-incubator/setup-miniconda@v4
         with:
@@ -46,14 +46,14 @@ jobs:
           path: veraPDF-profiles
       - name: Validate UA-2
         run: |
-          verapdf -f ua2 --format html thesis.pdf > verapdf-ua-2.html
+          verapdf -f ua2 --format html main.pdf > verapdf-ua-2.html
       - name: Validate WCAG 2.2
         run: |
-          verapdf --profile veraPDF-profiles/PDF_UA/WCAG-2-2-Complete-PDF20.xml --format html thesis.pdf > verapdf-wcag-2.2.html
+          verapdf --profile veraPDF-profiles/PDF_UA/WCAG-2-2-Complete-PDF20.xml --format html main.pdf > verapdf-wcag-2.2.html
       - name: Upload document and reports
         uses: actions/upload-artifact@v4
         with:
-          name: thesis-${{ matrix.texlive-version }}
+          name: test-TeX-Live-${{ matrix.texlive-version }}
           path: |
-            thesis.pdf
+            main.pdf
             verapdf-*.html
