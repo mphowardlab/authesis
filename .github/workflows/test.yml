@@ -33,11 +33,6 @@ jobs:
           texlive_version: ${{ matrix.texlive-version }}
           run: |
             latexmk thesis.tex
-      - name: Upload document
-        uses: actions/upload-artifact@v4
-        with:
-          name: thesis
-          path: thesis.pdf
       - name: Install veraPDF
         uses: conda-incubator/setup-miniconda@v4
         with:
@@ -54,10 +49,11 @@ jobs:
           verapdf -f ua2 --format html thesis.pdf > verapdf-ua-2.html
       - name: Validate WCAG 2.2
         run: |
-          verapdf --profile veraPDF-profiles/WCAG-2-2-Complete-PDF20.xml --format html thesis.pdf > verapdf-wcag-2.2.html
-      - name: Upload reports
+          verapdf --profile veraPDF-profiles/PDF_UA/WCAG-2-2-Complete-PDF20.xml --format html thesis.pdf > verapdf-wcag-2.2.html
+      - name: Upload document and reports
         uses: actions/upload-artifact@v4
         with:
-          name: veraPDF-reports
+          name: thesis-${{ matrix.texlive-version }}
           path: |
+            thesis.pdf
             verapdf-*.html
