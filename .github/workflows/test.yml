@@ -1,0 +1,37 @@
+name: test
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      -main
+
+  workflow_call:
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build [TexLive-${{ matrix.texlive-version }}]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        texlive-version: ["2025", "2026"]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Compile document
+        uses: xu-cheng/texlive-action@v3
+        with:
+          texlive_version: ${{ matrix.texlive-version }}
+          run: |
+            latexmk thesis.tex
+      - name: Upload document
+        uses: actions/upload-artifact@v4
+        with:
+          name: thesis
+          path: thesis.pdf
