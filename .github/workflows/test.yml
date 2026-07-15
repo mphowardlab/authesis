@@ -42,7 +42,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v4
         with:
           activate-environment: test
-          environment-file: ./github/test-environment.yml
+          environment-file: ./.github/test-environment.yml
           miniforge-version: latest
       - name: Install veraPDF profiles
         uses: actions/checkout@v7
