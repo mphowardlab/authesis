@@ -13,7 +13,8 @@
 % * thesis: Master's thesis rather than dissertation
 % * nocopyright: Disable copyright notice
 % * ragged: Use ragged right edge rather than justified text (better for accessibility)
-% * bibstyle: biblatex bibliography style
+% * bibstyle: biblatex bibliography style (keyword argument)
+% * nohyperref: Disable hyperlinks
 \documentclass{authesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,8 +36,6 @@
 % Set the bibliography style using the bibstyle option of the class.
 % Most other options can be changed here using
 % \ExecuteBibliographyOptions{}
-\usepackage[hidelinks,pdfusetitle]{hyperref}
-\urlstyle{same}
 \addbibresource{./references.bib}
 
 % Footnotes

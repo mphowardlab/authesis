@@ -53,6 +53,10 @@
 \DeclareOptionX{bibstyle}[phys]{
     \PassOptionsToPackage{style=#1}{biblatex}
 }
+% Hyperlinks
+\newif\ifusehyperref
+\usehyperreftrue
+\DeclareOptionX{nohyperref}{\usehyperreffalse}
 \ProcessOptionsX\relax
 
 % Default formatting
@@ -65,6 +69,22 @@
     \raggedright
     \setlength{\parindent}{1.5em}
 \fi
+
+% hyperlink formatting
+\usepackage{xcolor}
+\definecolor{hyperrefblue}{HTML}{3333ff}
+\RequirePackage{hyperref}
+\hypersetup{
+  pdfusetitle,
+  bookmarksnumbered,
+  colorlinks=true,
+  allcolors=hyperrefblue,
+  linktoc=page
+}
+\ifusehyperref\else
+\hypersetup{draft}
+\fi
+\urlstyle{same}
 
 % Section header styles, modified from report.cls
 \def\@makechapterhead#1{%
