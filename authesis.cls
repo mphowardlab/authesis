@@ -28,6 +28,8 @@
 
 \LoadClass[letterpaper,12pt,oneside]{report}
 
+\RequirePackage{xkeyval}
+
 \RequirePackage[english]{babel}
 \RequirePackage{geometry}
 \RequirePackage{setspace}
@@ -37,16 +39,21 @@
 % Dissertation (default) or thesis
 \newif\ifdissertation
 \dissertationtrue
-\DeclareOption{thesis}{\dissertationfalse}
+\DeclareOptionX{thesis}{\dissertationfalse}
 % Whether to print copyright notice
 \newif\ifcopyright
 \copyrighttrue
-\DeclareOption{nocopyright}{\copyrightfalse}
+\DeclareOptionX{nocopyright}{\copyrightfalse}
 % Whether to make the text ragged
 \newif\ifragged
 \raggedfalse
-\DeclareOption{ragged}{\raggedtrue}
-\ProcessOptions\relax
+\DeclareOptionX{ragged}{\raggedtrue}
+% Bibliography style
+\PassOptionsToPackage{style=phys}{biblatex}
+\DeclareOptionX{bibstyle}[phys]{
+    \PassOptionsToPackage{style=#1}{biblatex}
+}
+\ProcessOptionsX\relax
 
 % Default formatting
 \newgeometry{margin=1in}
@@ -232,3 +239,9 @@
 \renewcommand*{\l@section}{\@dottedtocline{1}{1.5em}{2.5em}}
 \renewcommand*{\l@figure}{\@dottedtocline{0}{0em}{2.5em}}
 \renewcommand*{\l@table}{\@dottedtocline{0}{0em}{2.5em}}
+
+% bibliography
+\RequirePackage[backend=biber, biblabel=brackets, defernumbers=true]{biblatex}
+\DeclareCiteCommand{\citenum}{}{\bibhyperref{\printfield{labelnumber}}}{\multicitedelim}{}
+\setlength{\bibitemsep}{\baselineskip}
+\AtBeginBibliography{\singlespacing}
