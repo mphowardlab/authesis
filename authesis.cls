@@ -21,7 +21,7 @@
 % AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 % LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 % OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-% SOFTWARE. 
+% SOFTWARE.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[2025/11/01]
 \ProvidesClass{authesis}[2026/06/03 v1.0.0 Auburn University Graduate School Dissertation/Thesis]
@@ -142,7 +142,7 @@
 \newcommand{\degreetype}[1]{\def\@degreetype{#1}}
 \newcommand{\keywords}[1]{\def\@keywords{#1}}
 \newcommand{\committee}[1]{\def\@committee{#1}}
-\newcommand{\committeemember}[1]{\item{\hspace{-1.5em}#1}}
+\newcommand{\committeemember}[1]{\item\parbox[t]{\textwidth}{\centering #1}}
 \ifdissertation
 \def\thesistype{dissertation}
 \else
@@ -151,9 +151,8 @@
 \renewcommand{\maketitle}{%
     \newgeometry{margin=1in,top=2in,bottom=1in}
     \thispagestyle{empty}
-    \begin{center}
-        \newpage
-        \singlespacing
+    \begin{singlespace}
+        \begin{center}
         \setlength{\parskip}{0pt}
         \tagstructbegin{tag=Title}
         \tagmcbegin{tag=Title}
@@ -165,17 +164,17 @@
         \tagpdfsetup{para/tagging=true}
         \tagmcend
         \tagstructend
-
+        %
         \vspace{\baselineskip}
-
+        %
         by \par
-
+        %
         \vspace{\baselineskip}
-
+        %
         \@author\par
-
-	\vspace{4\baselineskip}
-
+        %
+        \vspace{4\baselineskip}
+        %
         % Handle default degree type
         \ifdefined\@degreetype
         \def\@@degreetype{\@degreetype}
@@ -192,33 +191,32 @@
         in partial fulfillment of the\\
         requirements for the Degree of\\
         \@@degreetype \par
-
+        %
         \vspace{\baselineskip}
-
+        %
         Auburn, Alabama \par
         \@date \par
-
-	\vspace{4\baselineskip}
-
-	\ifdefined\@keywords
-	Keywords: \@keywords \par
-	\vspace{2\baselineskip}
-	\fi
-
-	\ifcopyright
-	Copyright {\the\year{}} by \@author \par
-	\vspace{2\baselineskip}
-	\fi
-
-	Approved by\par
-        \begin{itemize}[label={}]
-                \setlength{\itemsep}{0pt}
-                \setlength{\parskip}{0pt}
-                \setlength{\parsep}{0pt}
-                \centering
-                \@committee
-        \end{itemize}
-    \end{center}
+        %
+        \vspace{4\baselineskip}
+        %
+        \ifdefined\@keywords
+        Keywords: \@keywords \par
+        \vspace{2\baselineskip}
+        \fi
+        %
+        \ifcopyright
+        Copyright {\the\year{}} by \@author \par
+        \vspace{2\baselineskip}
+        \fi
+        %
+        Approved by\par
+        \end{center}
+        \begin{list}{}{\leftmargin=0em \itemsep=0pt}
+            \sloppy
+            \setlength{\parskip}{0pt}
+            \@committee
+        \end{list}
+    \end{singlespace}
     \restoregeometry
 }
 
