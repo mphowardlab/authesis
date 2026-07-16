@@ -24,7 +24,7 @@
 % SOFTWARE.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[2025/11/01]
-\ProvidesClass{authesis}[2026/06/03 v1.0.0 Auburn University Graduate School Dissertation/Thesis]
+\ProvidesClass{authesis}[2026/07/16 v1.1.0 Auburn University Graduate School Dissertation/Thesis]
 
 \LoadClass[letterpaper,12pt,oneside]{report}
 
