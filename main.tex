@@ -10,11 +10,11 @@
     }
 }
 %% Options
-% * thesis: Master's thesis rather than dissertation
-% * nocopyright: Disable copyright notice
-% * ragged: Use ragged right edge rather than justified text (better for accessibility)
 % * bibstyle: biblatex bibliography style (keyword argument)
+% * nocopyright: Disable copyright notice
 % * nohyperref: Disable hyperlinks
+% * ragged: Use ragged right edge rather than justified text (better for accessibility)
+% * thesis: Master's thesis rather than dissertation
 \documentclass{authesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,6 +112,13 @@ I am grateful to my parents for their support.
 \listoftables
 
 \listoffigures
+
+% List of abbreviations, entered like a table
+\begin{listofabbreviations}
+AU & Auburn University \\
+UA & University of Alabama
+\end{listofabbreviations}
+
 \end{frontmatter}
 
 % Chapters
