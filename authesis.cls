@@ -31,6 +31,7 @@
 \RequirePackage{xkeyval}
 
 \RequirePackage[english]{babel}
+\RequirePackage{csquotes}
 \RequirePackage{geometry}
 \RequirePackage{setspace}
 \RequirePackage{float}
@@ -73,9 +74,8 @@
 % hyperlink formatting
 \usepackage{xcolor}
 \definecolor{hyperrefblue}{HTML}{3333ff}
-\RequirePackage{hyperref}
+\RequirePackage[pdfusetitle]{hyperref}
 \hypersetup{
-  pdfusetitle,
   bookmarksnumbered,
   colorlinks=true,
   allcolors=hyperrefblue,
