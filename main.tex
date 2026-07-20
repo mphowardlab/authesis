@@ -10,11 +10,11 @@
     }
 }
 %% Options
-% * thesis: Master's thesis rather than dissertation
-% * nocopyright: Disable copyright notice
-% * ragged: Use ragged right edge rather than justified text (better for accessibility)
 % * bibstyle: biblatex bibliography style (keyword argument)
+% * nocopyright: Disable copyright notice
 % * nohyperref: Disable hyperlinks
+% * ragged: Use ragged right edge rather than justified text (better for accessibility)
+% * thesis: Master's thesis rather than dissertation
 \documentclass{authesis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,6 +112,15 @@ I am grateful to my parents for their support.
 \listoftables
 
 \listoffigures
+
+% List of Abbreviations or Symbols (nomenclature), entered like a table.
+% This environment accepts an optional argument that may be set to
+% Abbreviations (default), Symbols, or Abbreviations and Symbols.
+\begin{listofnomenclature}[Abbreviations]
+AU & Auburn University \\
+UA & University of Alabama
+\end{listofnomenclature}
+
 \end{frontmatter}
 
 % Chapters

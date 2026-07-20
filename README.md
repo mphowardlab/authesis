@@ -46,17 +46,20 @@ can specify when it is loaded:
 
 The `options` that can be added as a comma-separated list are:
 
-- `thesis`: format the front matter for a thesis rather than a dissertation.
-- `nocopyright`: disable the copyright notice on the title page.
-- `ragged`: use ragged right edge, rather than justified, text. Ragged text may
-  may be better for accessibility.
 - `bibstyle`: a valid [bibliiography style][4] (keyword argument). Defaults to
   `phys` if not specified.
+- `nocopyright`: disable the copyright notice on the title page.
 - `nohyperref`: disable hyperlinks in document.
+- `ragged`: use ragged right edge, rather than justified, text. Ragged text may
+  may be better for accessibility.
+- `thesis`: format the front matter for a thesis rather than a dissertation.
 
 You should then ensure you have loaded and configured the packages you need for
 writing your document. There are a couple things you need to be aware of:
 
+- This template is configured to use the default sans-serif font. If you would
+  like to use a different sans-serif font, uncomment the `fontsetup` package
+  and choose a font available on your system.
 - You must use `unicode-math` if you are using math.
 - Different graphics packages (such as `tikz` and `pgfplots` can also be used),
   but make sure you are using accessible colors.
@@ -66,8 +69,8 @@ with tagging. You can check the status of a large number of packages through
 the [LaTeX Tagging Project][5].
 
 > [!TIP]
-> The `fontsetup` package can slow down compilation considerably. Comment out
-> the font commands while you are drafting to speedup your workflow.
+> The `fontsetup` package can slow down compilation considerably, so it is
+> recommended to keep the font commands commented out while you are drafting!
 
 ## Front matter
 
@@ -99,10 +102,10 @@ The following lists of contents are the final component of the front matter:
    section depth (required).
 2. `\listoftables`: List of all tables (required if tables are used).
 3. `\listoffigures`: List of all figures (required if figures are used).
-4. List of abbrevations of symbols: not currently supported by template.
+4. `\begin{listofnomenclature}`: List of abbreviations and/or symbols. You can
+   change the name of the contents in this list using its optional argument.
 
-You should comment out the `\listoftables` and `\listoffigures` if they are not
-needed for your document.
+You should comment out any lists that are not needed for your document.
 
 ## Writing the document
 
@@ -177,11 +180,11 @@ something. Stylewise, be sure to follow the conventions of your discipline!
   ```
 
   If you also have header columns, you can specify them like:
-  
+
   ```latex
   \tagpdfsetup{table/header-columns={1},table/header-rows={1}}
   ```
-  
+
   Use multirow and multicolumn layouts in tables with caution. It *may* be
   possible to use the `multirow` package if you load `array` [first][7].
 
@@ -198,7 +201,7 @@ conda install -c conda-forge verapdf
 
 > [!TIP]
 > If you are installing by conda on a Mac computer with Apple silicon, you will
-> need to configure your environment for x86_64 because the feedstock does not
+> need to configure your environment for x86\_64 because the feedstock does not
 > currently support ARM-based processors.
 >
 > ```bash

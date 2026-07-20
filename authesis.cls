@@ -259,6 +259,19 @@
 \renewcommand*{\l@figure}{\@dottedtocline{0}{0em}{2.5em}}
 \renewcommand*{\l@table}{\@dottedtocline{0}{0em}{2.5em}}
 
+% list of abbreviations or symbols
+\newenvironment{listofnomenclature}[1][Abbreviations]{%
+\chapter*{List of #1}
+\addcontentsline{toc}{chapter}{List of #1}
+\vspace{\topskip}
+\begin{flushleft}
+\tagpdfsetup{table/tagging=presentation}
+\begin{tabular}{ll}
+}{%
+\end{tabular}
+\end{flushleft}
+}
+
 % bibliography
 \RequirePackage[backend=biber, biblabel=brackets, defernumbers=true]{biblatex}
 \DeclareCiteCommand{\citenum}{}{\bibhyperref{\printfield{labelnumber}}}{\multicitedelim}{}
