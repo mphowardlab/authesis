@@ -259,10 +259,10 @@
 \renewcommand*{\l@figure}{\@dottedtocline{0}{0em}{2.5em}}
 \renewcommand*{\l@table}{\@dottedtocline{0}{0em}{2.5em}}
 
-% list of abbreviations
-\newenvironment{listofabbreviations}{%
-\chapter*{List of Abbreviations}
-\addcontentsline{toc}{chapter}{List of Abbreviations}
+% list of abbreviations or symbols
+\newenvironment{listofnomenclature}[1][Abbreviations]{%
+\chapter*{List of #1}
+\addcontentsline{toc}{chapter}{List of #1}
 \vspace{\topskip}
 \begin{flushleft}
 \tagpdfsetup{table/tagging=presentation}

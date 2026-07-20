@@ -102,7 +102,8 @@ The following lists of contents are the final component of the front matter:
    section depth (required).
 2. `\listoftables`: List of all tables (required if tables are used).
 3. `\listoffigures`: List of all figures (required if figures are used).
-4. List of abbrevations: List of all abbreviations (required if applicable).
+4. `\begin{listofnomenclature}`: List of abbreviations and/or symbols. You can
+   change the name of the contents in this list using its optional argument.
 
 You should comment out any lists that are not needed for your document.
 
