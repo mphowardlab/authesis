@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-07-21
+
+### Added
+
+- List of abbreviations or symbols (#13).
+
+### Changed
+
+- Use ragged-right text alignment by default (#20).
+
+### Fixed
+
+- Explicitly request 10pt font for all superscripts and superscripts (#18, #21).
+- Single spacing for long chapter titles, section titles, and quotes (#15, #17,
+  #20).
+- Compiler warnings (#16).
+
 ## [1.1.0] - 2026-07-16
 
 ### Added
@@ -39,5 +56,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release of `authesis.cls` with example.
 
+[1.2.0]: https://github.com/mphowardlab/authesis/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/mphowardlab/authesis/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/mphowardlab/authesis/releases/tag/v1.0.0
