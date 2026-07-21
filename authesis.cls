@@ -88,43 +88,24 @@
 
 % Section header styles, modified from report.cls
 \def\@makechapterhead#1{%
-  \vspace*{3\baselineskip}%
   {\parindent \z@ \centering \normalfont
     \ifnum \c@secnumdepth >\m@ne
         \@chapapp\space \thechapter
         \par\nobreak
     \fi
     \interlinepenalty\@M
-    \singlespacing
-    #1\par\nobreak
+    {\singlespacing #1\par\nobreak}
     \vskip \baselineskip
   }}
 \def\@makeschapterhead#1{%
-  \vspace*{3\baselineskip}%
   {\parindent \z@ \centering \normalfont
     \interlinepenalty\@M
-    \singlespacing
-    #1\par\nobreak
+    {\singlespacing #1\par\nobreak}
     \vskip \baselineskip
   }}
 % chapter* in front matter has no top space
 \newenvironment{frontmatter}{%
-  \renewcommand{\@makeschapterhead}[1]{%
-      {\parindent \z@ \centering \normalfont
-        \interlinepenalty\@M
-        \singlespacing
-        ##1\par\nobreak
-        \vskip \baselineskip
-      }}
 }{%
-  \renewcommand{\@makeschapterhead}[1]{%
-      \vspace*{3\baselineskip}
-      {\parindent \z@ \centering \normalfont
-        \interlinepenalty\@M
-        \singlespacing
-        ##1\par\nobreak
-        \vskip \baselineskip
-      }}
 }
 \renewcommand\section{\@startsection{section}{1}{\z@}%
     {-3.5ex \@plus -1ex \@minus -.2ex}%
