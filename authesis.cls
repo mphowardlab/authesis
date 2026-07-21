@@ -71,6 +71,11 @@
     \setlength{\parindent}{1.5em}
 \fi
 
+% quote formatting
+\AtBeginEnvironment{quote}{\singlespacing}
+\AtBeginEnvironment{quotation}{\singlespacing}
+\AtBeginEnvironment{verbatim}{\singlespacing}
+
 % hyperlink formatting
 \usepackage{xcolor}
 \definecolor{hyperrefblue}{HTML}{3333ff}
