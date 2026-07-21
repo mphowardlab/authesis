@@ -65,7 +65,8 @@
 \RequirePackage{indentfirst}
 \doublespacing
 \renewcommand{\familydefault}{\sfdefault}
-\DeclareMathSizes{12pt}{12pt}{10pt}{8pt}
+\DeclareMathSizes{12pt}{12pt}{10pt}{10pt}
+\DeclareMathSizes{10pt}{10pt}{10pt}{10pt}
 \ifragged
     \raggedright
     \setlength{\parindent}{1.5em}
