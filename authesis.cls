@@ -88,55 +88,37 @@
 
 % Section header styles, modified from report.cls
 \def\@makechapterhead#1{%
-  \vspace*{3\baselineskip}%
   {\parindent \z@ \centering \normalfont
     \ifnum \c@secnumdepth >\m@ne
         \@chapapp\space \thechapter
         \par\nobreak
     \fi
     \interlinepenalty\@M
-    #1\par\nobreak
+    {\singlespacing #1\par\nobreak}
     \vskip \baselineskip
   }}
 \def\@makeschapterhead#1{%
-  \vspace*{3\baselineskip}%
-  {\parindent \z@ \centering
-    \normalfont
+  {\parindent \z@ \centering \normalfont
     \interlinepenalty\@M
-    #1\par\nobreak
+    {\singlespacing #1\par\nobreak}
     \vskip \baselineskip
   }}
 % chapter* in front matter has no top space
 \newenvironment{frontmatter}{%
-  \renewcommand{\@makeschapterhead}[1]{%
-      {\parindent \z@ \centering
-        \normalfont
-        \interlinepenalty\@M
-        ##1\par\nobreak
-        \vskip \baselineskip
-      }}
 }{%
-  \renewcommand{\@makeschapterhead}[1]{%
-      \vspace*{3\baselineskip}
-      {\parindent \z@ \centering
-        \normalfont
-        \interlinepenalty\@M
-        ##1\par\nobreak
-        \vskip \baselineskip
-      }}
 }
-\renewcommand\section{\@startsection {section}{1}{\z@}%
-                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
-                                   {2.3ex \@plus.2ex}%
-                                   {\normalfont\normalsize\raggedright}}
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+    {-3.5ex \@plus -1ex \@minus -.2ex}%
+    {2.3ex \@plus.2ex}%
+    {\centering \singlespacing \normalfont \normalsize}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
-                                     {\normalfont\normalsize\raggedright}}
+    {-3.25ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\centering \singlespacing \normalfont \normalsize}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
-                                     {1.5ex \@plus .2ex}%
-                                     {\normalfont\normalsize\raggedright}}
+    {-3.25ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\centering \singlespacing \normalfont \normalsize}}
 
 % Title page
 \newcommand{\degreetype}[1]{\def\@degreetype{#1}}
