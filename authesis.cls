@@ -116,15 +116,15 @@
 \renewcommand\section{\@startsection{section}{1}{\z@}%
     {-3.5ex \@plus -1ex \@minus -.2ex}%
     {2.3ex \@plus.2ex}%
-    {\centering \singlespacing \normalfont \normalsize}}
+    {\raggedright \singlespacing \normalfont \normalsize}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
     {-3.25ex\@plus -1ex \@minus -.2ex}%
     {1.5ex \@plus .2ex}%
-    {\centering \singlespacing \normalfont \normalsize}}
+    {\raggedright \singlespacing \normalfont \normalsize}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
     {-3.25ex\@plus -1ex \@minus -.2ex}%
     {1.5ex \@plus .2ex}%
-    {\centering \singlespacing \normalfont \normalsize}}
+    {\raggedright \singlespacing \normalfont \normalsize}}
 
 % Title page
 \newcommand{\degreetype}[1]{\def\@degreetype{#1}}
